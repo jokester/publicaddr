@@ -1,5 +1,31 @@
+# publicaddr
+
+Allow node.js process to listen with `SO_REUSEPORT`.
+
+(`SO_REUSEPORT` will be set on all TCP sockets before actual `bind` call).
+
+## Installation
+
+```
+npm install --save publicaddr
+# OR
+yarn add publicaddr
+```
+
+## Usage
+
+Prepend `publicaddr` binary to your `node` binary. (or other interpreter like `ts-node`)
+
+```js
+  // example use in a package.json script
+  "scripts": {
+    "start": "publicaddr node demo-server.js"
+  },
+```
+
 ## refs
 
+<!--
 ### without nodejs
 
 - https://github.com/wolfcw/libfaketime
@@ -10,3 +36,4 @@
 ### with nodejs
 
 - https://github.com/nodejs/nan
+-->

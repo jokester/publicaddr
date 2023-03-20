@@ -1,11 +1,17 @@
 {
-  "name": "gyp",
-  "version": "1.0.0",
-  "description": "",
+  "name": "publicaddr",
+  "version": "0.1.0",
+  "description": "allow node.js process to listen on TCP with SO_REUSEPORT",
   "main": "index.js",
   "bin": {
     "publicaddr": "bin/publicaddr"
   },
+  "files": [
+    "bin",
+    "src",
+    "binding.gyp"
+  ],
+  "url": "https://github.com/jokester/publicaddr",
   "scripts": {
     "build": "node-gyp build",
     "configure": "node-gyp configure",
