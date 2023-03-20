@@ -1,0 +1,11 @@
+version: "3"
+services:
+  demo-server:
+    build: ..
+    command: npm start
+    working_dir: /opt/publicaddress/demo
+    deploy:
+      replicas: 12
+    network_mode: host
+    ports: # FIXME: how to get default network_mode + replicas working???
+      - '3000:3000'

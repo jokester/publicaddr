@@ -1,0 +1,21 @@
+{
+  "name": "gyp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "publicaddr": "bin/publicaddr"
+  },
+  "scripts": {
+    "build": "node-gyp build",
+    "configure": "node-gyp configure",
+    "install": "node-gyp rebuild",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nan": "^2.7.0",
+    "node-gyp": "^9.3.1"
+  }
+}
