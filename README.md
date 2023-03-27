@@ -1,8 +1,10 @@
 # publicaddr
 
-Allow node.js process to listen with `SO_REUSEPORT`.
+Allow node.js process to listen on TCP with `SO_REUSEPORT`.
 
 (`SO_REUSEPORT` will be set on all TCP sockets before actual `bind` call).
+
+// Only Linux is supported
 
 ## Installation
 
@@ -25,7 +27,14 @@ Prepend `publicaddr` binary to your `node` binary. (or other interpreter like `t
 
 ## refs
 
+- [What does SO_REUSEPORT do](https://stackoverflow.com/a/14388707)
+- [How to Expose Multiple Containers On the Same Port](https://iximiuz.com/en/posts/multiple-containers-same-port-reverse-proxy/)
+
 <!--
+### upstream issue
+
+- https://github.com/danfuzz/lactoserv/issues/146
+
 ### without nodejs
 
 - https://github.com/wolfcw/libfaketime
