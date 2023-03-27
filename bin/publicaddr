@@ -2,9 +2,9 @@
 
 set -ue
 
-SO_PATH="$(dirname $(realpath "$0"))/../build/Release/publicaddress.node"
+SO_PATH="$(dirname $(realpath "$0"))/../build/Release/publicaddr.node"
 
-# set -x
+set -x
 
 if [[ -f "$SO_PATH" ]]; then
   LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"
