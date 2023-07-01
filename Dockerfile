@@ -1,6 +1,6 @@
 FROM node:18-bookworm-slim
 
-RUN apt update && apt install python3
+RUN apt-get update && apt-get install -y python3
 
 COPY . /opt/publicaddr
 
