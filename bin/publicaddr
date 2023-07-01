@@ -7,7 +7,9 @@ SO_PATH="$(dirname $(realpath "$0"))/../build/Release/publicaddr.node"
 set -x
 
 if [[ -f "$SO_PATH" ]]; then
+  echo "[publicaddr] execing node"
   LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"
 else
+  echo "[publicaddr] module not found"
   exec "$@"
 fi

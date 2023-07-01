@@ -32,10 +32,10 @@ int bind(int socket, const struct sockaddr *address,
         init();
         static const int optval = 1;
         setsockopt(socket, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof(optval));
-        printf("[libpublicaddress] setting SO_REUSEPORT for fd(%d)\n", socket);
+        printf("[publicaddr] setting SO_REUSEPORT for fd(%d)\n", socket);
 
         /* setsockopt(socket, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)); */
-        /* printf("[libpublicaddress] setting SO_REUSEADDR for fd(%d)\n", socket); */
+        /* printf("[publicaddr] setting SO_REUSEADDR for fd(%d)\n", socket); */
     }
 
 

@@ -1,6 +1,6 @@
 {
-  "name": "publicaddress-demo",
-  "description": "demo http server for npm/publicaddress",
+  "name": "publicaddr-demo",
+  "description": "demo http server for npm/publicaddr",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -14,7 +14,7 @@
   "license": "BSD",
   "dependencies": {
     "@jokester/ts-commonutil": "^0.4.1",
-    "publicaddress": "file:.."
+    "publicaddr": "file:.."
   },
   "devDependencies": {
     "@types/node": "^18.15.3",

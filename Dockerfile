@@ -1,7 +1,7 @@
 FROM node:18-bookworm-slim
 
-COPY . /opt/publicaddress
+COPY . /opt/publicaddr
 
-RUN set -uex                          \
-        && cd /opt/publicaddress/demo \
+RUN set -uex                       \
+        && cd /opt/publicaddr/demo \
         && npm i

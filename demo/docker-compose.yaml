@@ -3,7 +3,7 @@ services:
   demo-server:
     build: ..
     command: npm start
-    working_dir: /opt/publicaddress/demo
+    working_dir: /opt/publicaddr/demo
     deploy:
       replicas: 12
     network_mode: host
