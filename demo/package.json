@@ -7,15 +7,13 @@
     "start": "exec publicaddr node demo-server.js # 'exec' allows our process see SIGTERM"
   },
   "author": "Wang Guan <momocraft@gmail.com>",
-  {
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/npm/cli.git"
-    }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jokester/publicaddr"
   },
   "license": "BSD",
   "dependencies": {
-    "@jokester/ts-commonutil": "^0.4.0",
+    "@jokester/ts-commonutil": "^0.4.1",
     "publicaddress": "file:.."
   },
   "devDependencies": {
