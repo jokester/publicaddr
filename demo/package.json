@@ -1,10 +1,10 @@
 {
   "name": "publicaddr-demo",
-  "description": "demo http server for npm/publicaddr",
+  "description": "demo http server for https://github.com/jokester/publicaddr",
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "exec publicaddr node demo-server.js # 'exec' allows our process see SIGTERM"
+    "start": "exec publicaddr node demo-server.js # 'exec' allows our process to see SIGTERM"
   },
   "author": "Wang Guan <momocraft@gmail.com>",
   "repository": {

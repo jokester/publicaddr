@@ -38,6 +38,5 @@ int bind(int socket, const struct sockaddr *address,
         /* printf("[publicaddr] setting SO_REUSEADDR for fd(%d)\n", socket); */
     }
 
-
     return real_bind(socket, address, address_len);
 }
