@@ -4,12 +4,12 @@ set -ue
 
 SO_PATH="$(dirname $(realpath "$0"))/../build/Release/publicaddr.node"
 
-set -x
-
 if [[ -f "$SO_PATH" ]]; then
   echo "[publicaddr] execing node"
+  set -x
   LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"
 else
-  echo "[publicaddr] module not found"
+  echo "[publicaddr] built module not found. still execing node."
+  set -x
   exec "$@"
 fi
