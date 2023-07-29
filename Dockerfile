@@ -1,6 +1,6 @@
 FROM node:18-bookworm-slim
 
-RUN apt-get update -y && apt-get install -y python3 build-essential
+RUN apt-get update -y && apt-get install -y python3 build-essential curl
 
 COPY . /opt/publicaddr
 
