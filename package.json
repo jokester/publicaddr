@@ -1,7 +1,16 @@
 {
   "name": "publicaddr",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "allow node.js to listen on TCP with SO_REUSEPORT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jokester/publicaddr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jokester/publicaddr/issues"
+  },
+  "author": "Wang Guan <momocraft@gmail.com>",
+  "homepage": "https://github.com/jokester/publicaddr#readme",
   "main": "index.js",
   "bin": {
     "publicaddr": "bin/publicaddr"
@@ -18,10 +27,10 @@
     "install": "node-gyp rebuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "BSD",
   "devDependencies": {
     "nan": "^2.7.0",
     "node-gyp": "^9.3.1"
-  }
+  },
+  "gypfile": true
 }
