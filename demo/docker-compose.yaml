@@ -2,7 +2,7 @@ version: "3"
 services:
   demo-server-g1: &demo-server
     build: ..
-    # image: ghcr.io/jokester/publicaddr:sha-f7a3d78
+    # image: ghcr.io/jokester/publicaddr:pr-1
     command: npm start
     working_dir: /opt/publicaddr/demo
     deploy:

@@ -1,5 +1,7 @@
 # publicaddr
 
+[![npm version](https://badge.fury.io/js/publicaddr.svg)](https://badge.fury.io/js/publicaddr)
+
 Allow multiple Node.js processes to listen on same port, with `SO_REUSEPORT`.
 
 (With this library, `SO_REUSEPORT` will be `setsockopt`-ed on all TCP sockets, before `bind` call).
