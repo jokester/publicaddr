@@ -30,8 +30,9 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ghcr.io/${{ github.repository }}
-          tags: |
+          flavor: |
             prefix=demo
+          tags: |
             type=ref,event=branch,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
             type=ref,event=pr
             type=sha
