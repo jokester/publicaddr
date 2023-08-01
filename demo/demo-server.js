@@ -18,13 +18,13 @@ async function main() {
         process.on('SIGTERM', resolve)
     })
     server.listen(port, () => {
-        console.info(`PID ${process.pid}: listening on port ${port}`)
+        console.info(`PID ${process.pid} / ${processTag}: listening on port ${port}`)
     })
     await gotSignal
     await new Promise(f => server.close(f))
-    console.debug('app closing. pretend to be cleaning up...')
+    console.debug(`PID ${process.pid} / ${processTag}: app closing. pretend to be cleaning up...`)
     await timing.wait(1e3 * (3 + 2 * gaussianRandom()))
-    console.debug('app closed.')
+    console.debug(`PID ${process.pid} / ${processTag}: app closed.`)
 }
 
 setImmediate(main)

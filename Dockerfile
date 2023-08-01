@@ -1,7 +1,10 @@
-FROM node:18
+# Dockerfile for demo
+FROM node:18-bookworm-slim
 
-COPY . /opt/publicaddress
+RUN apt-get update -y && apt-get install -y python3 build-essential curl
 
-RUN set -uex                          \
-        && cd /opt/publicaddress/demo \
+COPY . /opt/publicaddr
+
+RUN set -uex                       \
+        && cd /opt/publicaddr/demo \
         && npm i

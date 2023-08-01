@@ -1,7 +1,7 @@
 {
   "name": "publicaddr",
-  "version": "0.2.0",
-  "description": "allow node.js process to listen on TCP with SO_REUSEPORT",
+  "version": "0.3.0",
+  "description": "allow node.js to listen on TCP with SO_REUSEPORT",
   "main": "index.js",
   "bin": {
     "publicaddr": "bin/publicaddr"
@@ -19,7 +19,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "BSD",
   "devDependencies": {
     "nan": "^2.7.0",
     "node-gyp": "^9.3.1"
