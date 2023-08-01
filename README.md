@@ -1,10 +1,16 @@
 # publicaddr
 
-Allow node.js process to listen on TCP with `SO_REUSEPORT`.
+Allow multiple Node.js processes to listen on same port, with `SO_REUSEPORT`.
 
-(`SO_REUSEPORT` will be set on all TCP sockets before actual `bind` call).
+(With this library, `SO_REUSEPORT` will be `setsockopt`-ed on all TCP sockets, before `bind` call).
 
-// Only Linux is supported
+## Supported OS
+
+Only Linux is supported by far.
+
+I have no plan to support other OSes. PRs welcome.
+
+For BSD / MacOS a similar trick should be doable, like what they did in [wolfcw/libfaketime](https://github.com/wolfcw/libfaketime).
 
 ## Installation
 
@@ -14,21 +20,54 @@ npm install --save publicaddr
 yarn add publicaddr
 ```
 
+`node-gyp` and C compiler are required.
+
 ## Usage
 
-Prepend `publicaddr` binary to your `node` binary. (or other interpreter like `ts-node`)
+Prepend `publicaddr` wrapper to your `node` binary (or other interpreter like `ts-node`). Example:
 
 ```js
-  // example use in a package.json script
+  // package.json
   "scripts": {
     "start": "publicaddr node demo-server.js"
   },
 ```
 
-## refs
+## Refs
 
 - [What does SO_REUSEPORT do](https://stackoverflow.com/a/14388707)
 - [How to Expose Multiple Containers On the Same Port](https://iximiuz.com/en/posts/multiple-containers-same-port-reverse-proxy/)
+
+## Demo
+
+### Simple usage
+
+Clone [this repo](https://github.com/jokester/publicaddr) and run multiple instances like:
+
+```shell
+git clone https://github.com/jokester/publicaddr
+
+cd publicaddr/demo
+
+npm install
+
+npm start &
+npm start &
+npm start &
+npm start &
+
+wrk -t6 -c2000 -d10s http://127.0.0.1:3000 # or other HTTP benchmark tool
+
+kill %1 %2 %3 %4
+```
+
+### Inside containers
+
+Clone [this repo](https://github.com/jokester/publicaddr) and run `docker-compose up` in `demo/`
+
+## License
+
+BSD
 
 <!--
 ### upstream issue

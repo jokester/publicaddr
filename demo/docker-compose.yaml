@@ -1,8 +1,8 @@
 version: "3"
 services:
   demo-server-g1: &demo-server
-    # build: ..
-    image: ghcr.io/jokester/publicaddr:sha-f7a3d78
+    build: ..
+    # image: ghcr.io/jokester/publicaddr:sha-f7a3d78
     command: npm start
     working_dir: /opt/publicaddr/demo
     deploy:
@@ -12,14 +12,16 @@ services:
     network_mode: host
 
   # with publicaddr one can even do zero-downtime rollout
-  # e.g. (starting with g1.replica=6 g2.replica=0)
-  # 1. set new image in g1
-  # 2. set g1.replica=3 g1.replica=3
-  # 3. docker-compose up -d # user starts to see reply from g1 / g2
-  # 4. set g1.replica=0 g2.replica=6
-  # 5. docker-compose up -d # user starts to see reply from g2
+  #
+  # e.g.
+  # 0. Start with g1.replica=6 g2.replica=0  # Users only see reply from g1
+  # 1. Set new image in g2
+  # 2. Set g1.replicas=3 g1.replicas=3
+  # 3. docker-compose up -d                  # user starts to see reply from g1 / g2
+  # 4. Set g1.replicas=0 g2.replicas=6
+  # 5. docker-compose up -d                  # user starts to see reply from g2
   demo-server-g2:
     <<: *demo-server
-    image: ghcr.io/jokester/publicaddr:pr-1
+    # image: ghcr.io/jokester/publicaddr:pr-1
     deploy:
       replicas: 0
