@@ -11,5 +11,11 @@
  */
 const load = require('node-gyp-build/node-gyp-build');
 
-const found = load.resolve(__dirname);
-console.debug(found);
+try {
+  const found = load.resolve(__dirname);
+  console.info(found);
+} catch (e) {
+  // console.warn('[publicaddr] native module not found.');
+} finally {
+  process.exit(0);
+}
