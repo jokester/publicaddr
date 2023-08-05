@@ -8,9 +8,9 @@ Allow multiple Node.js processes to listen on same port, with `SO_REUSEPORT`.
 
 ## Supported OS
 
-Only Linux is supported by far.
+Only Linux is supported.
 
-Prebuilt binaries for `linux-x64-glibc` `linux-amd64-musl` `linux-arm64` `linux-armv7` are shipped in the npm package.
+The npm package contains prebuilt binaries for `linux-x64` `linux-arm64` `linux-armv7`.
 
 If your platform is not listed above, `SO_REUSEPORT` will not be set. Feel free to create an issue if other Linux variant is required.
 

@@ -4,6 +4,7 @@ services:
     build:
       context: ..
       dockerfile: demo/Dockerfile
+      # dockerfile: demo/Dockerfile-alpine
     # image: ghcr.io/jokester/publicaddr:pr-1
     command: npm start
     working_dir: /opt/publicaddr/demo
