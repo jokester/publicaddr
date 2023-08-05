@@ -1,5 +1,7 @@
 on:
-  pull_request: {} # NOTE: worktree would be a temporal merge commit
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
