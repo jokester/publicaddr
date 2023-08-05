@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 set -ue
-set -o pipefail
+# set -o pipefail # not supported by real sh?
 
 if [[ $# -eq 0 ]]; then
   cat <<END

@@ -1,5 +1,5 @@
 # Dockerfile for demo
-FROM node:18-alpine
+FROM node:18-bookworm-slim
 
 COPY . /opt/publicaddr
 
