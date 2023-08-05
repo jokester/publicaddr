@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - main
+  pull_request: {} # NOTE: worktree would be a temporal merge commit
 
 jobs:
   publish:
@@ -17,3 +18,4 @@ jobs:
       - uses: JS-DevTools/npm-publish@v2
         with:
           token: ${{ secrets.NPM_TOKEN }}
+          dry-run: ${{ github.event_name != 'push' }}
