@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -ue
+set -o pipefail
+
+SO_PATH="$(node $(realpath "$0"))/find-"
+
+if [[ -f "$SO_PATH" ]]; then
+  echo "[publicaddr] execing next process"
+  set -x
+  LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"
+else
+  echo "[publicaddr] binary module not found. still execing next process."
+  set -x
+  exec "$@"
+fi

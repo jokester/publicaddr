@@ -11,5 +11,5 @@
  */
 const load = require('node-gyp-build/node-gyp-build');
 
-const found = load.resolve(__dirname)
-console.debug('found', found)
+const found = load.resolve(__dirname);
+console.debug(found);

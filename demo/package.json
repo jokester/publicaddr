@@ -4,7 +4,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "exec publicaddr node demo-server.js"
+    "start": "publicaddr node demo-server.js"
   },
   "author": "Wang Guan <momocraft@gmail.com>",
   "repository": {
