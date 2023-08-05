@@ -18,7 +18,7 @@
   "files": [
     "bin",
     "src",
-    "NO-binding.gyp AS it causes npm in alpine to always try node-gyp",
+    "NO-binding.gyp AS publishing it causes npm to try node-gyp",
     "prebuilds"
   ],
   "url": "https://github.com/jokester/publicaddr",
