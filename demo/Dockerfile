@@ -11,4 +11,5 @@ RUN set -uex                         \
         && npm run build:prebuildify \
         && npm i --omit=dev          \
         && cd /opt/publicaddr/demo   \
-        && npm i
+        && npm i                     \
+        && npm cache clean --force
