@@ -18,7 +18,7 @@
   "files": [
     "bin",
     "src",
-    "NO-binding.gyp AS publishing it causes npm to try node-gyp",
+    "binding.gyp",
     "prebuilds"
   ],
   "url": "https://github.com/jokester/publicaddr",

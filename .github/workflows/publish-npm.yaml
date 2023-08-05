@@ -15,6 +15,7 @@ jobs:
       - run: npm ci
       - run: npm run build:prebuildify-cross
       - run: find prebuilds
+      - run: rm -v binding.gyp # publishing it causes npm to try node-gyp. BUT it is required to build:prebuildify-cross.
       - uses: JS-DevTools/npm-publish@v2
         with:
           token: ${{ secrets.NPM_TOKEN }}
