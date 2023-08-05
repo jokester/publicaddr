@@ -3,8 +3,8 @@ name: Check
 on:
   push:
     branches:
-      - main
-  pull_request: {} # NOTE: worktree would be a temporal merge commit
+      - nonexist
+  # pull_request: {} # NOTE: worktree would be a temporal merge commit
 
 defaults:
   run:
