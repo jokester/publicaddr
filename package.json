@@ -30,7 +30,9 @@
   "license": "BSD",
   "devDependencies": {
     "nan": "^2.7.0",
-    "node-gyp": "^9.3.1"
+    "node-gyp": "^9.4.0",
+    "prebuildify": "^5.0.1",
+    "prebuildify-cross": "^5.0.0"
   },
   "gypfile": true
 }

@@ -27,6 +27,9 @@
         "cflags": [
             "-fPIC", "-c", "-shared"
         ],
-    }]
+    }],
+    'variables' : {
+        'openssl_fips': '',
+    }
 }
 
