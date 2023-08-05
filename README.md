@@ -10,6 +10,10 @@ Allow multiple Node.js processes to listen on same port, with `SO_REUSEPORT`.
 
 Only Linux is supported by far.
 
+Prebuilt binaries for `linux-x64-glibc` `linux-amd64-musl` `linux-arm64` `linux-armv7` are shipped in the npm package.
+
+If your platform is not listed above, `SO_REUSEPORT` will not be set.
+
 I have no plan to support other OSes. PRs welcome.
 
 For BSD / MacOS a similar trick should be doable, like what they did in [wolfcw/libfaketime](https://github.com/wolfcw/libfaketime).
@@ -21,8 +25,6 @@ npm install --save publicaddr
 # OR
 yarn add publicaddr
 ```
-
-`node-gyp` and C compiler are required.
 
 ## Usage
 
