@@ -1,6 +1,6 @@
 {
   "name": "publicaddr",
-  "version": "0.4.1",
+  "version": "0.4.2-pre1",
   "description": "Allow Node.js to listen on TCP with SO_REUSEPORT",
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "bin",
     "src",
     "binding.gyp",
+    "find-ldpreload.js",
     "prebuilds"
   ],
   "url": "https://github.com/jokester/publicaddr",
