@@ -14,7 +14,7 @@
   "license": "BSD",
   "dependencies": {
     "@jokester/ts-commonutil": "^0.4.1",
-    "publicaddr": "0.4.2-pre2"
+    "publicaddr": "0.4.2-pre3"
   },
   "devDependencies": {
     "@types/node": "^18.15.3",

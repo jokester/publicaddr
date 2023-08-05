@@ -3,7 +3,7 @@
 set -ue
 # set -o pipefail # not supported by real sh?
 
-if [[ $# -eq 0 ]]; then
+if [ $# -eq 0 ]; then
   cat <<END
 
   publicaddr: set SO_REUSEPORT for Node.js
@@ -18,7 +18,7 @@ fi
 
 SO_PATH=$(node $(dirname $(realpath "$0"))/../find-ldpreload.js)
 
-if [[ "x${SO_PATH}" != "x" ]] && [[ -f "$SO_PATH" ]]; then
+if [ "x${SO_PATH}" != "x" ] && [ -f "$SO_PATH" ]; then
   echo "[publicaddr] found native module: $SO_PATH"
   set -x
   LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"

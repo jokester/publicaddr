@@ -12,7 +12,7 @@ Only Linux is supported by far.
 
 Prebuilt binaries for `linux-x64-glibc` `linux-amd64-musl` `linux-arm64` `linux-armv7` are shipped in the npm package.
 
-If your platform is not listed above, `SO_REUSEPORT` will not be set.
+If your platform is not listed above, `SO_REUSEPORT` will not be set. Feel free to create an issue if other Linux variant is required.
 
 I have no plan to support other OSes. PRs welcome.
 
@@ -41,6 +41,8 @@ Prepend `publicaddr` wrapper to your `node` binary (or other interpreter like `t
 
 - [What does SO_REUSEPORT do](https://stackoverflow.com/a/14388707)
 - [How to Expose Multiple Containers On the Same Port](https://iximiuz.com/en/posts/multiple-containers-same-port-reverse-proxy/)
+
+And [prebuild/prebuildify](https://github.com/prebuild/prebuildify) [prebuild/prebuildify-cross](https://github.com/prebuild/prebuildify-cross) [prebuild/node-gyp-build](https://github.com/prebuild/node-gyp-build/blob/master/node-gyp-build.js), they made shipping multiarch prebuilt native modules incredibly simple.
 
 ## Demo
 
