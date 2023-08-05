@@ -108,4 +108,4 @@ dist
 
 /.idea
 
-/demo/node_modules
+/prebuilds

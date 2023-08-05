@@ -1,6 +1,6 @@
 {
   "name": "publicaddr",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Allow Node.js to listen on TCP with SO_REUSEPORT",
   "repository": {
     "type": "git",
@@ -18,19 +18,26 @@
   "files": [
     "bin",
     "src",
-    "binding.gyp"
+    "binding.gyp",
+    "prebuilds"
   ],
   "url": "https://github.com/jokester/publicaddr",
   "scripts": {
-    "build": "node-gyp build",
-    "configure": "node-gyp configure",
-    "install": "node-gyp rebuild",
+    "build": "node-gyp configure && node-gyp build",
+    "wtf": "node-gyp-build-optional",
+    "build:prebuildify": "prebuildify --napi --strip && rm -rf build",
+    "build:prebuildify-cross": "prebuildify-cross -i linux-armv7 -i linux-arm64 -i alpine -i centos7-devtoolset7 --napi --strip",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "BSD",
+  "dependencies": {
+    "node-gyp-build": "^4.6.0"
+  },
   "devDependencies": {
     "nan": "^2.7.0",
-    "node-gyp": "^9.3.1"
+    "node-gyp": "^9.4.0",
+    "prebuildify": "^5.0.1",
+    "prebuildify-cross": "^5.0.0"
   },
-  "gypfile": true
+  "gypfile": false
 }

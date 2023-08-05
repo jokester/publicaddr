@@ -1,16 +1,29 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 set -ue
 set -o pipefail
 
-SO_PATH="$(dirname $(realpath "$0"))/../build/Release/publicaddr.node"
+if [[ $# -eq 0 ]]; then
+  cat <<END
 
-if [[ -f "$SO_PATH" ]]; then
-  echo "[publicaddr] execing node"
-  # set -x
+  publicaddr: set SO_REUSEPORT for Node.js
+
+  USAGE: publicaddr node_or_other_command ...
+
+  EXAMPLE: publicaddr node app.js
+
+END
+  exit 0
+fi
+
+SO_PATH=$(node $(dirname $(realpath "$0"))/../find-ldpreload.js)
+
+if [[ "x${SO_PATH}" != "x" ]] && [[ -f "$SO_PATH" ]]; then
+  echo "[publicaddr] found native module: $SO_PATH"
+  set -x
   LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"
 else
-  echo "[publicaddr] built module not found. still execing node."
-  # set -x
+  echo "[publicaddr] native module not found. still execing next process."
+  set -x
   exec "$@"
 fi

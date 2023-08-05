@@ -3,8 +3,8 @@ name: Check
 on:
   push:
     branches:
-      - main
-  pull_request: {} # NOTE: worktree would be a temporal merge commit
+      - nonexist
+  # pull_request: {} # NOTE: worktree would be a temporal merge commit
 
 defaults:
   run:
@@ -48,7 +48,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: demo/Dockerfile
           # platforms: linux/amd64
           platforms: linux/amd64,linux/arm64
           push: true

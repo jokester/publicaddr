@@ -1,7 +1,9 @@
 version: "3"
 services:
   demo-server-g1: &demo-server
-    build: ..
+    build:
+      context: ..
+      dockerfile: demo/Dockerfile
     # image: ghcr.io/jokester/publicaddr:pr-1
     command: npm start
     working_dir: /opt/publicaddr/demo
