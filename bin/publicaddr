@@ -19,7 +19,7 @@ fi
 SO_PATH=$(node $(dirname $(realpath "$0"))/../find-ldpreload.js)
 
 if [[ "x${SO_PATH}" != "x" ]] && [[ -f "$SO_PATH" ]]; then
-  echo "[publicaddr] execing next process"
+  echo "[publicaddr] found native module: $SO_PATH"
   set -x
   LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"
 else

@@ -9,6 +9,6 @@ RUN set -uex                         \
         && cd /opt/publicaddr        \
         && npm i                     \
         && npm run build:prebuildify \
-        && rm -rf node_modules       \
+        && npm i --omit=dev          \
         && cd /opt/publicaddr/demo   \
         && npm i
