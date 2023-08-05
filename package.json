@@ -1,6 +1,6 @@
 {
   "name": "publicaddr",
-  "version": "0.4.2-pre3",
+  "version": "0.4.2-pre4",
   "description": "Allow Node.js to listen on TCP with SO_REUSEPORT",
   "repository": {
     "type": "git",
