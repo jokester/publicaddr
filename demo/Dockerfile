@@ -1,15 +1,9 @@
 # Dockerfile for demo
-FROM node:18-bookworm-slim
-
-RUN apt-get update -y && apt-get install -y python3 build-essential curl
+FROM node:18-alpine
 
 COPY . /opt/publicaddr
 
 RUN set -uex                         \
-        && cd /opt/publicaddr        \
-        && npm i                     \
-        && npm run build:prebuildify \
-        && npm i --omit=dev          \
         && cd /opt/publicaddr/demo   \
         && npm i                     \
         && npm cache clean --force
