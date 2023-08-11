@@ -1,15 +1,15 @@
 version: "3"
 services:
   demo-server-g1: &demo-server
-    build:
-      context: ..
-      dockerfile: demo/Dockerfile
+    # build:
+    #   context: ..
+      # dockerfile: demo/Dockerfile
       # dockerfile: demo/Dockerfile-alpine
-    # image: ghcr.io/jokester/publicaddr:pr-1
+    image: ${SLOT1_IMAGE}
     command: npm start
     working_dir: /opt/publicaddr/demo
     deploy:
-      replicas: 6
+      replicas: ${SLOT1_REPLICA:-4}
     # NOTE I have no idea how to get default network_mode (requires port mapping) + replica working
     # network_mode=host (and perhaps some other) works with SO_REUSEPORT
     network_mode: host
@@ -25,6 +25,6 @@ services:
   # 5. docker-compose up -d                  # user starts to see reply from g2
   demo-server-g2:
     <<: *demo-server
-    # image: ghcr.io/jokester/publicaddr:pr-1
+    image: ${SLOT2_IMAGE}
     deploy:
-      replicas: 0
+      replicas: ${SLOT2_REPLICA:-0}
