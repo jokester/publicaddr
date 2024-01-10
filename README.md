@@ -44,9 +44,7 @@ Prepend `publicaddr` wrapper to your `node` binary (or other interpreter like `t
 
 And [prebuild/prebuildify](https://github.com/prebuild/prebuildify) [prebuild/prebuildify-cross](https://github.com/prebuild/prebuildify-cross) [prebuild/node-gyp-build](https://github.com/prebuild/node-gyp-build/blob/master/node-gyp-build.js), they made shipping multiarch prebuilt native modules incredibly simple.
 
-## Demo
-
-### Simple usage
+## Demo: Rolling update between 2 versions without downtime
 
 Clone [this repo](https://github.com/jokester/publicaddr) and run multiple instances like:
 
@@ -55,21 +53,18 @@ git clone https://github.com/jokester/publicaddr
 
 cd publicaddr/demo
 
-npm install
+# run version a with 4 containers
+docker-compose up -d
 
-npm start &
-npm start &
-npm start &
-npm start &
+# start a HTTP benchmark
+wrk -t6 -c2000 -d120s http://127.0.0.1:3000 &
 
-wrk -t6 -c2000 -d10s http://127.0.0.1:3000 # or other HTTP benchmark tool
+# switch between version a / b, for a few times
+./switch-version.sh a b a b
 
-kill %1 %2 %3 %4
+# after benchmark ends
+docker-compose down
 ```
-
-### Inside containers
-
-Clone [this repo](https://github.com/jokester/publicaddr) and run `docker-compose up` in `demo/`
 
 ## License
 

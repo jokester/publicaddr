@@ -14,7 +14,7 @@ services:
     environment:
       VERSION: 'a'
     deploy:
-      replicas: ${VERSION_A_REPLICA:-0}
+      replicas: ${VERSION_A_REPLICA:-4}
 
   demo-server-b: &demo-server
     build: .

@@ -5,12 +5,25 @@ const waitRandom = (min, max) => wait(min + Math.random() * (max - min))
 const processTag = `demo-server-version-${process.env.VERSION ?? '?'}-${Math.random().toString(16).slice(2, 10)}`
 
 let reqCount = 0
+let onFlight = 0
 
 const server = http.createServer(async (req, res) => {
-    res.writeHead(200);
+    ++onFlight;
+    res.writeHead(200, undefined, { connection: 'Close' });
     await waitRandom(20, 100);
     res.end(`reqCount: ${++reqCount} from ${processTag}`)
+    --onFlight;
 })
+
+function log(...args) {
+    console.info(`${Date.now().toFixed(2)} ${processTag}:`, ...args)
+}
+
+async function waitRequestsEnd() {
+    while (onFlight > 0) {
+        await wait(1e3)
+    }
+}
 
 function startReportCount() {
     let lastReqCountReported = 0
@@ -18,7 +31,8 @@ function startReportCount() {
     const timer = setInterval(() => {
         const delta = reqCount - lastReqCountReported
         lastReqCountReported = reqCount
-        console.info(`PID ${process.pid} / ${processTag}: reqCount: ${reqCount} / delta: ${delta} in last ${interval}s`)
+        log(`reqCount: ${reqCount}`);
+        log(`mean RPS: ${(delta / interval).toFixed(2)}`);
     }, interval * 1e3)
     return () => clearInterval(timer)
 }
@@ -32,14 +46,15 @@ async function main() {
     const stopReportCount = startReportCount()
 
     server.listen(port, () => {
-        console.info(`PID ${process.pid} / ${processTag}: listening on port ${port}`)
+        log(`listening on port ${port}`)
     })
     await gotSignal
-    await new Promise(f => server.close(f))
+    const error = await new Promise(f => server.close(f))
+    if (error) {
+        console.error('server close error:', error)
+    }
     stopReportCount()
-    console.info(`PID ${process.pid} / ${processTag}: app closing. pretend to be cleaning up...`)
-    await wait(10e3);
-    console.info(`PID ${process.pid} / ${processTag}: app closed.`)
+    log(`app closing.`)
 }
 
 await main();
