@@ -1,9 +1,8 @@
 # Dockerfile for demo
 FROM node:18-bookworm-slim
 
-COPY . /opt/publicaddr
-
 RUN set -uex                         \
-        && cd /opt/publicaddr/demo   \
-        && npm i                     \
+        && npm i -g publicaddr@0.4.3 \
         && npm cache clean --force
+
+COPY ./demo-server.mjs /opt/demo-server.mjs

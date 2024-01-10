@@ -1,13 +1,14 @@
-const http = require('node:http')
-const timing = require("@jokester/ts-commonutil/lib/concurrency/timing")
-const { gaussianRandom } = require("@jokester/ts-commonutil/lib/rxjs/distributions");
+import http from 'node:http';
+const wait = timeout => new Promise(f => setTimeout(f, timeout))
+const waitRandom = (min, max) => wait(min + Math.random() * (max - min))
 
-const processTag = `demo-server-${Math.random().toString(16).slice(2, 10)}`
+const processTag = `demo-server-version-${process.env.VERSION ?? '?'}-${Math.random().toString(16).slice(2, 10)}`
+
 let reqCount = 0
 
 const server = http.createServer(async (req, res) => {
     res.writeHead(200);
-    // await timing.wait(0.5e3 * gaussianRandom())
+    await waitRandom(20, 100);
     res.end(`reqCount: ${++reqCount} from ${processTag}`)
 })
 
@@ -37,8 +38,8 @@ async function main() {
     await new Promise(f => server.close(f))
     stopReportCount()
     console.info(`PID ${process.pid} / ${processTag}: app closing. pretend to be cleaning up...`)
-    await timing.wait(1e3 * (3 + 2 * gaussianRandom()))
+    await wait(10e3);
     console.info(`PID ${process.pid} / ${processTag}: app closed.`)
 }
 
-setImmediate(main)
+await main();
