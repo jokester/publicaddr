@@ -1,4 +1,5 @@
 # Dockerfile for demo
+# or, FROM node:18-alpine
 FROM node:18-bookworm-slim
 
 RUN set -uex                         \

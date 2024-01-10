@@ -9,7 +9,9 @@ let onFlight = 0
 
 const server = http.createServer(async (req, res) => {
     ++onFlight;
-    res.writeHead(200, undefined, { connection: 'Close' });
+    res.writeHead(200, undefined,
+        // { connection: 'Close' }
+    );
     await waitRandom(20, 100);
     res.end(`reqCount: ${++reqCount} from ${processTag}`)
     --onFlight;
