@@ -23,7 +23,6 @@ if [ "x${SO_PATH}" != "x" ] && [ -f "$SO_PATH" ]; then
   set -x
   LD_PRELOAD="${SO_PATH} ${LD_PRELOAD:-}" exec "$@"
 else
-  echo "[publicaddr] native module not found. still execing next process."
-  set -x
-  exec "$@"
+  echo "[publicaddr] native module not found. your OS/platform may be unsupported."
+  exit 1
 fi
